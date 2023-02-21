@@ -2,27 +2,25 @@
 using Dalamud.Plugin;
 using System;
 
-namespace SamplePlugin
+namespace BaccaratTracker
 {
     [Serializable]
     public class Configuration : IPluginConfiguration
     {
         public int Version { get; set; } = 0;
 
-        public bool SomePropertyToBeSavedAndWithADefault { get; set; } = true;
-
         // the below exist just to make saving less cumbersome
         [NonSerialized]
-        private DalamudPluginInterface? PluginInterface;
+        private DalamudPluginInterface? pluginInterface;
 
-        public void Initialize(DalamudPluginInterface pluginInterface)
+        public void Initialize(DalamudPluginInterface dalamudPluginInterface)
         {
-            this.PluginInterface = pluginInterface;
+            this.pluginInterface = dalamudPluginInterface;
         }
 
         public void Save()
         {
-            this.PluginInterface!.SavePluginConfig(this);
+            this.pluginInterface!.SavePluginConfig(this);
         }
     }
 }
