@@ -2,20 +2,20 @@
 using Dalamud.IoC;
 using Dalamud.Plugin;
 using System.IO;
+using BaccaratTracker.Windows;
 using Dalamud.Interface.Windowing;
-using SamplePlugin.Windows;
 
-namespace SamplePlugin
+namespace BaccaratTracker
 {
     public sealed class Plugin : IDalamudPlugin
     {
-        public string Name => "Sample Plugin";
-        private const string CommandName = "/pmycommand";
+        public string Name => "Baccarat Tracker";
+        private const string CommandName = "/baccarat";
 
         private DalamudPluginInterface PluginInterface { get; init; }
         private CommandManager CommandManager { get; init; }
         public Configuration Configuration { get; init; }
-        public WindowSystem WindowSystem = new("SamplePlugin");
+        public WindowSystem WindowSystem = new("BaccaratTracker");
 
         private ConfigWindow ConfigWindow { get; init; }
         private MainWindow MainWindow { get; init; }
@@ -30,12 +30,8 @@ namespace SamplePlugin
             this.Configuration = this.PluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
             this.Configuration.Initialize(this.PluginInterface);
 
-            // you might normally want to embed resources and load them from the manifest stream
-            var imagePath = Path.Combine(PluginInterface.AssemblyLocation.Directory?.FullName!, "goat.png");
-            var goatImage = this.PluginInterface.UiBuilder.LoadImage(imagePath);
-
             ConfigWindow = new ConfigWindow(this);
-            MainWindow = new MainWindow(this, goatImage);
+            MainWindow = new MainWindow(this);
             
             WindowSystem.AddWindow(ConfigWindow);
             WindowSystem.AddWindow(MainWindow);

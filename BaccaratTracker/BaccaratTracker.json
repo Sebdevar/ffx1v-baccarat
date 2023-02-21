@@ -1,0 +1,13 @@
+{
+  "Author": "Sebastien De Varennes",
+  "Name": "Baccarat Tracker",
+  "Punchline": "Customisable Baccarat tracker for venue dealings.",
+  "Description": "Use /baccarat to open settings menu",
+  "InternalName": "baccaratTracker",
+  "ApplicableVersion": "any",
+  "Tags": [
+    "wip",
+    "other",
+    "gamba"
+  ]
+}
