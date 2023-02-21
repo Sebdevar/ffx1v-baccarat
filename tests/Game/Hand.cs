@@ -126,6 +126,22 @@ public class HandTests
         var initialHandValue = nonEmptyHand.HandValue;
         nonEmptyHand.AddCard(11);
 
-        Assert.That(emptyHand.HandValue, Is.EqualTo(initialHandValue));
+        Assert.That(nonEmptyHand.HandValue, Is.EqualTo(initialHandValue));
+    }
+    
+    [Test]
+    public void GIVEN_aNonEmptyHand_WHEN_clearingHand_THEN_handShouldBecomeEmpty()
+    {
+        nonEmptyHand.ClearHand();
+        
+        Assert.That(nonEmptyHand.Cards, Has.Length.EqualTo(0));
+    }
+    
+    [Test]
+    public void GIVEN_aNonEmptyHand_WHEN_clearingHand_THEN_handValueShouldBe0()
+    {
+        nonEmptyHand.ClearHand();
+        
+        Assert.That(nonEmptyHand.HandValue, Is.EqualTo(0));
     }
 }
