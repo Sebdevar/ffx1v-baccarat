@@ -4,23 +4,36 @@ namespace BaccaratTracker.Game;
 
 public class Hand
 {
-    private List<int> cards = new List<int>();
+    private readonly List<int> cards = new();
 
     public int[] Cards => cards.ToArray();
 
-    public int HandValue { get; }
+    public int HandValue { get; private set; }
 
     public void AddCard(int newCard)
     {
-        // ignore implementation until tests are done
-        // if (cards.Count < 3)
-        // {
-        //     cards.Add(newCard);
-        //     UpdateHandValue();
-        // }
+        if (cards.Count < 3)
+        {
+            cards.Add(newCard);
+            AddToHandValue(newCard);
+        }
     }
 
-    public void ClearHand() {}
+    public void ClearHand()
+    {
+        cards.Clear();
+        HandValue = 0;
+    }
 
-    protected static void UpdateHandValue() { }
+    protected void AddToHandValue(int newValue)
+    {
+        if (newValue < 10)
+        {
+            HandValue += newValue;
+            if (HandValue > 9)
+            {
+                HandValue -= 10;
+            }
+        }
+    }
 }
