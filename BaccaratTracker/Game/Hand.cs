@@ -12,11 +12,16 @@ public class Hand
 
     public void AddCard(int newCard)
     {
-        if (cards.Count < 3)
+        if (!IsHandFull())
         {
             cards.Add(newCard);
             AddToHandValue(newCard);
         }
+    }
+
+    public bool IsHandFull()
+    {
+        return cards.Count >= 3;
     }
 
     public void ClearHand()

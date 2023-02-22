@@ -47,7 +47,7 @@ public class HandTests
         
         Assert.That(emptyHand.Cards, Has.Length.EqualTo(1));
     }
-
+    
     [Test]
     public void GIVEN_anEmptyHand_WHEN_addingACard_THEN_handValueIsUpdated()
     {
@@ -144,4 +144,23 @@ public class HandTests
         
         Assert.That(nonEmptyHand.HandValue, Is.EqualTo(0));
     }
+    
+    [Test]
+    public void GIVEN_anEmptyHand_WHEN_callingIsHandFull_THEN_returnsFalse()
+    {
+        Assert.That(emptyHand.IsHandFull(), Is.False);
+    }
+    
+    [Test]
+    public void GIVEN_aNonEmptyHand_WHEN_callingIsHandFull_THEN_returnsFalse()
+    {
+        Assert.That(nonEmptyHand.IsHandFull(), Is.False);
+    }
+        
+    [Test]
+    public void GIVEN_aFullHand_WHEN_callingIsHandFull_THEN_returnsTrue()
+    {
+        Assert.That(fullHand.IsHandFull(), Is.True);
+    }
+
 }
