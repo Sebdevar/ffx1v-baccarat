@@ -10,7 +10,7 @@ public class ConfigWindow : Window, IDisposable
     private Configuration configuration;
 
     public ConfigWindow(Plugin plugin) : base(
-        "Baccarat Settings",
+        "Baccarat Tracker Settings",
         ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoScrollbar |
         ImGuiWindowFlags.NoScrollWithMouse)
     {
